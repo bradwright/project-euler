@@ -7,25 +7,14 @@
 %% 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 %% By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
-fib(N) ->
-    fib(N, 0, 1, [0]).
-
-fib(0, Current, Next, Fibs) ->
-    lists:reverse(Fibs); % Reverse the list as the order is important
-
-fib(N, Current, Next, Fibs) ->
-    fib(N - 1, Next, Current + Next, [Next | Fibs]).
-
-max_fib(Max) ->
-    max_fib(max, []).
-max_fib(Max, []) ->
-    Z = 1,
-    max_fib(Max, [fib(Z)], Z).
-max_fib(Max, [_|T], Curr)
-  when T >= Max ->
-    Fibs ++ [T];
-  when T < Max ->
-    max_fib(Max, Fibs ++ [T], T).
+fib(Max) ->
+    fib(1, 2, [1], Max).
+fib(_, Next, Fibs, Max) when Next >= Max ->
+    lists:reverse(Fibs);
+fib(Current, Next, Fibs, Max) ->
+    fib(Next, Current + Next, [Next | Fibs], Max).
 
 main() ->
-    fib(10).
+    X = fib(3999999),
+    Y = lists:filter(fun(Z) -> Z rem 2 == 0 end, X),
+    lists:sum(Y).

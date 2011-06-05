@@ -16,5 +16,16 @@ fib(0, Current, Next, Fibs) ->
 fib(N, Current, Next, Fibs) ->
     fib(N - 1, Next, Current + Next, [Next | Fibs]).
 
+max_fib(Max) ->
+    max_fib(max, []).
+max_fib(Max, []) ->
+    Z = 1,
+    max_fib(Max, [fib(Z)], Z).
+max_fib(Max, [_|T], Curr)
+  when T >= Max ->
+    Fibs ++ [T];
+  when T < Max ->
+    max_fib(Max, Fibs ++ [T], T).
+
 main() ->
     fib(10).

@@ -7,7 +7,7 @@ What is the largest prime factor of the number 600851475143?
 """
 
 # this is based on:
-# http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+# http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Euler.27s_sieve
 def prime_factors(number):
     # return a list of factors of number
 

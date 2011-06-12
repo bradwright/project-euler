@@ -17,4 +17,4 @@ Run the Python examples:
 
   python ./euler_one.py
 
-`stdout` result is the Project Euler answer.
+``stdout`` result is the Project Euler answer.

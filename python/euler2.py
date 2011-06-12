@@ -14,9 +14,7 @@ def max_fibonacci(max_val):
     previous = 0
     current = 1
     while current < max_val:
-        _current = current
-        current = current + previous
-        previous = _current
+        previous, current = current, previous + current
         yield current
 
 print sum([x for x in max_fibonacci(4000000) if x % 2 == 0])

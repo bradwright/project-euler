@@ -15,6 +15,6 @@
 ;; function that returns fibonacci sequence
 (defn fibs [] (map first (iterate fib-pair [1 2])))
 ;; this is too expensive apparently
-(def valid-fibs (take-while (fn [x] (< x 4000000)) (fibs)))
+(def valid-fibs (take-while #(< % 4000000) (fibs)))
 ;; sum the even numbers
-(reduce + (filter (fn [x] (even? x)) valid-fibs))
+(reduce + (filter #(even? %) valid-fibs))

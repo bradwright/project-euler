@@ -14,7 +14,7 @@
 (defn fib-pair [[a b]] [b (+ a b)])
 ;; function that returns fibonacci sequence
 (defn fibs [] (map first (iterate fib-pair [1 2])))
-;; this is too expensive apparently
+;; use conditional take to lazily evaluate potentially infinite list
 (def valid-fibs (take-while #(<= % 4000000) (fibs)))
 ;; sum the even numbers
 (reduce + (filter #(even? %) valid-fibs))

@@ -1,1 +1,5 @@
 *.beam
+clojure/.lein/
+clojure/lib/
+clojure/.*
+pom.xml

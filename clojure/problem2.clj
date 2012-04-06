@@ -9,12 +9,16 @@
 ;; By considering the terms in the Fibonacci sequence whose values do
 ;; not exceed four million, find the sum of the even-valued terms.
 
+(defn fib-pair [[a b]]
+  "Returns a fibonacci pair"
+  [b (+ a b)])
 
-;; function to calculate fib pairs
-(defn fib-pair [[a b]] [b (+ a b)])
-;; function that returns fibonacci sequence
-(defn fibs [] (map first (iterate fib-pair [1 2])))
+(defn fibs []
+  "Returns the fibonacci sequence"
+  (map first (iterate fib-pair [1 2])))
+
 ;; use conditional take to lazily evaluate potentially infinite list
 (def valid-fibs (take-while #(<= % 4000000) (fibs)))
+
 ;; sum the even numbers
 (reduce + (filter #(even? %) valid-fibs))
